@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_19_182528) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_19_215235) do
   create_table "blogs", force: :cascade do |t|
     t.string "title"
     t.string "body"
     t.string "image_path", default: "https://upload.wikimedia.org/wikipedia/commons/b/b9/No_Cover.jpg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "blogs_categories", force: :cascade do |t|
+    t.integer "blog_id", null: false
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
