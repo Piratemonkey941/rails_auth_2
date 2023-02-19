@@ -10,6 +10,13 @@
   </p>
 
   <p>
+    <strong>Categories:</strong>
+    <% blog.categories.each do |category| %>
+      <p><%= category.name %></p>
+    <% end %>
+  </p>
+
+  <p>
     <strong>Image path:</strong>
     <%= image_tag blog.image_path %>
   </p>
