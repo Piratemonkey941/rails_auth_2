@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  # get 'pages/home'
+  # get 'pages/about_us'
+
+  
   resources :categories
-  root to: "blogs#index"
-  # get '/about-us', to: "pages#about_us"
+  # root to: "blogs#index"
+  root to: "pages#home"
+  get '/about-us', to: "pages#about_us"
 
   resources :blogs
 
