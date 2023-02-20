@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
-  before_action :require_user
+  before_action :require_user, except: [:show]
   before_action :require_same_blogger, only: [:destroy]
 
   # GET /blogs or /blogs.json
