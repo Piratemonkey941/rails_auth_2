@@ -1,5 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
+  before_action :require_user
+  before_action :require_same_blogger, only: [:destroy]
 
   # GET /blogs or /blogs.json
   def index
@@ -21,7 +23,7 @@ class BlogsController < ApplicationController
 
   # POST /blogs or /blogs.json
   def create
-    @blog = Blog.new(blog_params)
+    @blog = helpers.current_user.blogs.new(blog_params)
 
     respond_to do |format|
       if @blog.save
@@ -58,6 +60,14 @@ class BlogsController < ApplicationController
   end
 
   private
+
+    def require_same_blogger
+      if helpers.current_user != @blog.user
+        flash[:notice] = "Unauthorized User"
+        redirect_to helpers.current_user
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
       @blog = Blog.find(params[:id])

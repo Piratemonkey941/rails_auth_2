@@ -1,18 +1,20 @@
 Rails.application.routes.draw do
-  # get 'pages/home'
-  # get 'pages/about_us'
 
-  
-  resources :categories
-  # root to: "blogs#index"
   root to: "pages#home"
   get '/about-us', to: "pages#about_us"
+  get '/sign-up', to: "users#new"
+  get '/login', to: "sessions#new"
+  post '/login', to: "sessions#create"
+  delete '/logout', to: 'sessions#destroy'
 
+  resources :users, except: [:new]
+  resources :categories
   resources :blogs
 
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "blogs#index"
 end
+
+
+# get 'sessions/new'
+# get 'sessions/create'
+# get 'users/new'
+# get 'users/create'

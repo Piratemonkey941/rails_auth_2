@@ -12,18 +12,39 @@
           <a class="nav-link active" aria-current="page" href="<%= root_path %>">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<%=  about_us_path %>">About Us</a>
+          <a class="nav-link active" aria-current="page" href="<%= about_us_path %>">About Us</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<%=  blogs_path %>">Blogs</a>
+
+        <% if logged_in? %>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="<%= blogs_path %>">Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="<%= user_path(current_user) %>">My Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="<%= new_blog_path %>">New Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="<%= categories_path %>">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="<%= logout_path %>" data-turbo-method="delete">Logout</a>
+          </li>
+
+        <% else %>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="<%=  sign_up_path %>">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="<%=  login_path %>">Login</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<%=  new_blog_path %>">New Blog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<%=  categories_path %>">Categories</a>
-        </li>
+
+        <% end%>
         
+       
     </div>
   </div>
 </nav>
+

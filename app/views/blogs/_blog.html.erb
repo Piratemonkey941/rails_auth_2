@@ -4,6 +4,12 @@
     <%= blog.title %>
   </p>
 
+  <% if blog.user %>
+    <div>
+          <%= link_to "Written By: #{blog.user.username}", blog.user %>
+    </div>
+  <% end %>
+
   <p>
     <strong>Body:</strong>
     <%= blog.body %>

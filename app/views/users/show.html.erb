@@ -1,0 +1,13 @@
+<h1><%= @user.username%> Blogs</h1>
+
+
+
+<div id="blogs">
+  <% @user.blogs.each do |blog| %>
+    <%= render partial: 'blogs/blog', locals: { blog: blog } %>
+    <p>
+      <%= link_to "Show this blog", blog %>
+    </p>
+    <hr>
+  <% end %>
+</div>
